@@ -1,0 +1,78 @@
+@import "assets/styles/index.scss";
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.title {
+  @include text;
+}
+
+.openBtn {
+  padding: 5px;
+  background-color: $gray;
+  width: 140px;
+  border: 1px solid $gray5;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+  @include text;
+
+  &:hover {
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  right: -1px;
+  margin-top: 2px;
+  display: none;
+  flex-direction: column;
+  background-color: $gray;
+  border: 1px solid $gray5;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu.slideDown {
+  display: flex;
+  max-height: 300px;
+  animation: slide-down 0.5s ease-in-out;
+}
+
+@keyframes slide-down {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: 300px;
+  }
+}
+
+.sortbtn {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  @include caption;
+
+  &__isActive {
+    background-color: $green;
+    color: white;
+  }
+
+  &:hover {
+    background-color: $salad;
+  }
+}

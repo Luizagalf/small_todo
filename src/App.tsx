@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from "./app.module.scss";
+import TaskCreateContainer from "containers/TaskCreateContainer";
+import TaskListContainer from "containers/TaskListContainer";
+import TaskMenuContainer from "containers/TaskMenuContainer";
+import TaskSortContainer from "containers/TaskSortContainer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.wrapper}>
+      <div>
+        <h1 className={styles.title}>ToDo List</h1>
+        <TaskCreateContainer />
+        <div className={styles.menu}>
+          <TaskMenuContainer />
+          <TaskSortContainer />
+        </div>
+        <TaskListContainer />
+      </div>
     </div>
   );
 }

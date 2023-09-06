@@ -1,0 +1,23 @@
+@mixin title {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+@mixin subtitle {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+@mixin text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+@mixin caption {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}
