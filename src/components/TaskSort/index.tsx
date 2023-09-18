@@ -14,7 +14,7 @@ const data: { id: SortedByType; title: string }[] = [
 const TaskSort: React.FC<ITaskSortProps> = ({ sortTasks, sortedBy }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentTitle, setCurrentTitle] = useState("");
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const sortRef = useRef<HTMLDivElement | null>(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -31,7 +31,7 @@ const TaskSort: React.FC<ITaskSortProps> = ({ sortTasks, sortedBy }) => {
   };
 
   const closeMenu = (event: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+    if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
       setIsOpen(false);
     }
   };
@@ -49,16 +49,20 @@ const TaskSort: React.FC<ITaskSortProps> = ({ sortTasks, sortedBy }) => {
   }, []);
 
   return (
-    <div className={styles.dropdown}>
+    <div className={styles.dropdown} ref={sortRef}>
       <div className={styles.main}>
         <p className={styles.title}>Sort by:</p>
-        <button className={styles.openBtn} onClick={toggleDropdown}>
+        <button
+          className={styles.openBtn}
+          onClick={toggleDropdown}
+          data-testid="sortOpenBtn"
+        >
           {currentTitle}
         </button>
       </div>
       <div
-        ref={menuRef}
         className={`${styles.menu} ${isOpen ? styles.slideDown : ""}`}
+        data-testid="sortMenu"
       >
         {data.map((value) => (
           <button
@@ -66,6 +70,7 @@ const TaskSort: React.FC<ITaskSortProps> = ({ sortTasks, sortedBy }) => {
             className={`${styles.sortbtn} ${
               sortedBy === value.id ? styles.sortbtn__isActive : ""
             }`}
+            key={value.id}
           >
             {value.title}
           </button>

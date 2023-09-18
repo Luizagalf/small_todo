@@ -6,7 +6,7 @@ import { TasksStateType } from "types/TasksStateType";
 import { makeAutoObservable } from "mobx";
 import { SortedByType } from "types/SortedByType";
 
-class TaskStore {
+export class TaskStore {
   allTasks: ITasks = {};
   sortedTasks: ITasks = {};
   taskState: TasksStateType = "All";

@@ -1,6 +1,6 @@
 import ITasks from "interfaces/ITasks";
 
-class TaskService {
+export class TaskService {
   saveTasks = (tasks: ITasks): void => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   };

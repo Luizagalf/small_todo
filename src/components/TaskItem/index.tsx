@@ -13,7 +13,11 @@ const TaskItem: React.FC<ITaskItemProps> = ({ task, onToggle, onDelete }) => {
   return (
     <div className={`${styles.task} ${task.completed ? "completed" : ""}`}>
       <div className={styles.wrapper}>
-        <ToggleSwitch checked={task.completed} onChange={onToggle} />
+        <ToggleSwitch
+          checked={task.completed}
+          onChange={onToggle}
+          testId={`ToggleSwitch-${task.id}`}
+        />
         <div className={styles.main}>
           <h3
             className={`${styles.title} ${
@@ -36,13 +40,17 @@ const TaskItem: React.FC<ITaskItemProps> = ({ task, onToggle, onDelete }) => {
       </div>
       <div className={styles.details}>
         {task.priority === "0" ? (
-          <FcLowPriority />
+          <FcLowPriority data-testid="lowPriorityIcon" />
         ) : task.priority === "1" ? (
-          <FcMediumPriority />
+          <FcMediumPriority data-testid="mediumPriorityIcon" />
         ) : (
-          <FcHighPriority />
+          <FcHighPriority data-testid="highPriorityIcon" />
         )}
-        <button onClick={onDelete} className={styles.deletebtn}>
+        <button
+          onClick={onDelete}
+          className={styles.deletebtn}
+          data-testid={`deleteTaskBtn-${task.id}`}
+        >
           <MdDelete />
         </button>
       </div>

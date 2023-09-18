@@ -3,6 +3,6 @@ export default interface ITask {
   title: string;
   description: string;
   createdAt: string;
-  priority: "0" | "1" | "2";
+  priority: string;
   completed: boolean;
 }

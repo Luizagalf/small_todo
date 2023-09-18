@@ -8,8 +8,6 @@ import { validationSchema } from "./validation";
 import Modal from "react-modal";
 import { GrFormClose } from "react-icons/gr";
 
-Modal.setAppElement("#root");
-
 const TaskFormModal: React.FC<ITaskFormModalProps> = ({
   onAddTask,
   isOpen,
@@ -35,8 +33,9 @@ const TaskFormModal: React.FC<ITaskFormModalProps> = ({
       onRequestClose={onClose}
       className={`${styles.modal} ${isOpen ? styles.modal__open : ""}`}
       overlayClassName="modal-overlay"
+      ariaHideApp={false}
     >
-      <div className={styles.content}>
+      <div className={styles.content} data-testid="modal">
         <h2 className={styles.title}>Create new task</h2>
         <Formik
           initialValues={initialValues}
@@ -74,13 +73,18 @@ const TaskFormModal: React.FC<ITaskFormModalProps> = ({
                 type="submit"
                 disabled={!isValid || !dirty}
                 className={styles.createBtn}
+                data-testid="modalCreateBtn"
               >
                 Create
               </button>
             </Form>
           )}
         </Formik>
-        <button className={styles.closebtn} onClick={onClose}>
+        <button
+          className={styles.closebtn}
+          onClick={onClose}
+          data-testid="modalCloseBtn"
+        >
           <GrFormClose />
         </button>
       </div>

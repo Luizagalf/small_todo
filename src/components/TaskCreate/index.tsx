@@ -16,7 +16,11 @@ const TaskCreate: React.FC<ITaskCreateProps> = ({ onAddTask }) => {
 
   return (
     <>
-      <button onClick={handleOpenModal} className={styles.btn}>
+      <button
+        onClick={handleOpenModal}
+        className={styles.btn}
+        data-testid="createTaskBtn"
+      >
         Create new task
       </button>
       <TaskFormModal
